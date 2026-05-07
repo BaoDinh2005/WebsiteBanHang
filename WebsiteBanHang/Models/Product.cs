@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace WebsiteBanHang.Models
 {
     public class Product
@@ -10,10 +8,16 @@ namespace WebsiteBanHang.Models
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Tên không được để trống")]
+        [Required(ErrorMessage = "Tên sản phẩm không được để trống")]
         public string Name { get; set; }
 
-        [Range(0.01, double.MaxValue, ErrorMessage = "Giá phải > 0")]
+        [Range(1, 1000000000, ErrorMessage = "Giá phải lớn hơn 0")]
         public double Price { get; set; }
+
+        // Khóa ngoại nối sang Category
+        public int CategoryId { get; set; }
+
+        [ForeignKey("CategoryId")]
+        public Category Category { get; set; }
     }
 }
