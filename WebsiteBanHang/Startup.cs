@@ -25,7 +25,6 @@ namespace WebsiteBanHang
         {
             services.AddControllersWithViews();
 
-            // ĐOẠN DÁN MỚI NẰM Ở ĐÂY:
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
